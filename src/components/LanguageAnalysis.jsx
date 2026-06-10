@@ -178,36 +178,6 @@ function LanguageAnalysis({
       <br />
 
       <h3>
-        Language Proficiency
-      </h3>
-
-      {data.proficiencyData &&
-      data.proficiencyData.length >
-        0 ? (
-        <LanguageProficiencyChart
-          data={
-            data.proficiencyData
-          }
-        />
-      ) : (
-        <p
-          style={{
-            textAlign:
-              "center",
-            opacity: 0.7,
-          }}
-        >
-          No data found
-        </p>
-      )}
-
-      <br />
-
-      <hr />
-
-      <br />
-
-      <h3>
         Top Repositories
       </h3>
 
@@ -256,6 +226,38 @@ function LanguageAnalysis({
         recent activity within
         each language ecosystem.
       </p>
+
+      <br />
+      <hr />
+      <br />
+
+      <h3>
+        Language Proficiency
+      </h3>
+
+      {data.proficiencyData &&
+      data.proficiencyData.length >
+        0 ? (
+        <LanguageProficiencyChart
+          data={
+            data.proficiencyData
+          }
+        />
+      ) : (
+        <p
+          style={{
+            textAlign:
+              "center",
+            opacity: 0.7,
+          }}
+        >
+          No data found
+        </p>
+      )}
+
+      <br />
+
+     
 
       
 
