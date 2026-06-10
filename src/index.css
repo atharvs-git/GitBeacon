@@ -44,12 +44,9 @@ html, body, #root {
 body {
   background: #1a1a1a;
   color: #999;
-}
+  margin : 0;
 }
 
-body {
-  margin: 0;
-}
 
 #root {
   width: 1126px;
