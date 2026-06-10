@@ -1,4 +1,8 @@
 const token = import.meta.env.VITE_GITHUB_TOKEN;
+console.log(
+  "Token exists:",
+  !!import.meta.env.VITE_GITHUB_TOKEN
+);
 
 const query = `
 query($username: String!) {
