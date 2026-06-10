@@ -11,7 +11,7 @@ import {
   calculateReadmeQuality,
   calculateActivityTrend,
   calculateOpenSourceParticipation,
-} from "./healthScore";
+} from "./healthscore";
 
 import {
   calculateLearningVelocity,
