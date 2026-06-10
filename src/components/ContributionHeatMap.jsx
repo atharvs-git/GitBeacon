@@ -1,4 +1,4 @@
-import "../styles/ContributionHeatmap.css";
+import "../styles/ContributionHeatMap.css";
 
 function ContributionHeatmap({
   calendar,
