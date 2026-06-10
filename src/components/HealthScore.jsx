@@ -498,4 +498,4 @@ function HealthScore({ username }) {
   );
 }
 
-export default HealthScore;
+export default healthscore;
