@@ -497,5 +497,6 @@ function HealthScore({ username }) {
     </div>
   );
 }
+export default HealthScore;
 
 
