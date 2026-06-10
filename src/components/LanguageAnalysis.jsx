@@ -19,8 +19,8 @@ from "./LanguageDistributionChart";
 import LanguageProficiencyChart
 from "./LanguageProficiencyChart";
 
-import ContributionHeatmap
-from "./ContributionHeatmap";
+import ContributionHeatMap
+from "./ContributionHeatMap";
 
 function LanguageAnalysis({
   username,
@@ -252,7 +252,7 @@ function LanguageAnalysis({
         Contribution Activity
       </h3>
 
-      <ContributionHeatmap
+      <ContributionHeatMap
         calendar={calendarData}
       />
     </div>
