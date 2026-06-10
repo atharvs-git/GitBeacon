@@ -133,6 +133,19 @@ function LanguageAnalysis({
       <hr />
 
       <br />
+      <h3>
+        Contribution Activity
+      </h3>
+
+      <ContributionHeatMap
+        calendar={calendarData}
+      />
+
+      <br />
+
+      <hr />
+
+      <br />
 
       <h3>
         Language Distribution
@@ -244,17 +257,9 @@ function LanguageAnalysis({
         each language ecosystem.
       </p>
 
-      <br />
-      <hr />
-      <br />
+      
 
-      <h3>
-        Contribution Activity
-      </h3>
-
-      <ContributionHeatMap
-        calendar={calendarData}
-      />
+      
     </div>
   );
 }
