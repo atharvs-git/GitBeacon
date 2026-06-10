@@ -1,0 +1,240 @@
+.comparison-search-section {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.comparison-search-input {
+  flex: 1;
+  min-width: 220px;
+
+  padding: 0.9rem 1rem;
+
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+
+  background: rgba(255,255,255,0.05);
+  color: white;
+
+  font-size: 14px;
+}
+
+.comparison-search-input:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+.comparison-search-btn {
+  padding: 0.9rem 1.5rem;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #6366f1;
+  color: white;
+
+  cursor: pointer;
+  font-weight: 600;
+
+  transition: 0.2s;
+}
+
+.comparison-search-btn:hover {
+  transform: translateY(-2px);
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .comparison-header {
+    flex-direction: center;
+    align-items: center;
+    gap: 1.25rem;
+    margin: 2rem 0 1.5rem;
+  }
+  .comparison-vs {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+  .comparison-final-values {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+
+  }
+  .comparison-final-item {
+    text-align: center;
+  }
+  .comparison-final-item h1{
+    margin-bottom: 0.5rem;
+  }
+}
+
+
+.comparison-final-values h1 {
+  margin-bottom: 0.8rem;
+}
+
+.comparison-final-username {
+  margin-top: 0.4rem;
+  font-size: 1.1rem;
+}
+
+
+
+
+.comparison-user-avatar {
+  width: 72px;
+  height: 72px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 3px solid rgba(
+    255,
+    255,
+    255,
+    0.1
+  );
+}
+
+.comparison-users {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+
+.comparison-radar-container {
+  width: 100%;
+  height: 500px;
+  margin-top: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .comparison-radar-container {
+    height: 420px;
+  }
+
+  .comparison-radar-container text {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comparison-radar-container {
+    height: 350px;
+    padding: 0 0.5rem;
+  }
+
+  .comparison-radar-container text {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparison-users {
+    flex-direction: column;
+  }
+
+  .comparison-user-avatar {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+
+
+
+
+/* =========================================
+   Comparison Results
+========================================= */
+
+.comparison-result {
+  margin-top: 2rem;
+}
+
+.comparison-final-score {
+  text-align: center;
+}
+
+.comparison-final-values {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin: 2rem 0;
+}
+
+.comparison-final-values h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.comparison-vs-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.comparison-metrics {
+  width: 100%;
+}
+
+.comparison-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+
+  border-radius: 12px;
+
+  background: rgba(
+    255,
+    255,
+    255,
+    0.05
+  );
+}
+
+.comparison-metric-label {
+  font-weight: 600;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .comparison-final-values {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .comparison-vs-text {
+    font-size: 1.25rem;
+  }
+
+  .comparison-metric-row {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

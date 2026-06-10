@@ -1,0 +1,56 @@
+.heatmap-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+
+.heatmap-week {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.heatmap-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.2);
+}
+
+.heatmap-legend {
+  margin-top: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 12px;
+}
+
+.legend-box {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .heatmap-cell {
+    width: 10px;
+    height: 10px;
+  }
+
+  .legend-box {
+    width: 10px;
+    height: 10px;
+  }
+}
