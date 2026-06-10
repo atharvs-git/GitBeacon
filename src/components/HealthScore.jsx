@@ -13,7 +13,7 @@ import {
   calculateActivityTrend,
   calculateOpenSourceParticipation,
   calculateFinalHealthScore,
-} from "../utils/healthScore";
+} from "../utils/healthscore";
 
 import HealthRadarChart from "./HealthRadarChart";
 import "../styles/HealthRadarChart.css";
