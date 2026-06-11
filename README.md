@@ -2,148 +2,96 @@
 
 Developer Analytics Platform built with React and GitHub APIs that evaluates GitHub profiles through health scoring, repository analysis, contribution insights, language analytics, and developer comparisons.
 
----
-
-## Features
-
-### Developer Health Score
-
-A composite score generated from multiple GitHub profile quality indicators.
-
-#### Included Metrics
-
-- Commit Consistency
-- Repository Maintenance
-- README Quality
-- Activity Trend
-- Open Source Participation
-
-#### Visualizations
-
-- Radar Chart Analysis
-- Detailed Score Breakdown
-- Overall Health Grade
+**Live Demo:** [git-beacon.vercel.app](https://git-beacon.vercel.app/)
 
 ---
 
-### Learning Velocity & Repository Diversity
+## Architectural Decisions 
 
-Analyze how quickly a developer is expanding their technical skill set.
+When building a high-throughput frontend analytics tool without a dedicated backend proxy, navigating external API architectural guardrails is critical. Below are the core engineering solutions implemented in GitBeacon to optimize performance, state, and rate limits:
 
-#### Insights
+### 1. Handling API Rate-Limiting & Token Strategies
+* **The Challenge:** The GitHub REST API limits unauthenticated traffic strictly to 60 requests per hour, which quickly exhausts when iterating through deeply nested repository and commit endpoints.
+* **The Solution:** Implemented a dual-strategy abstraction layer. The architecture dynamically switches between the high-density **GitHub GraphQL API** (to fetch massive nested data graphs in a single network round-trip) and the REST API. For production builds, the app gracefully traps `403 Rate Limit Exceeded` errors, surfacing a secure UI prompt allowing power users to provide a local, short-lived Personal Access Token (PAT) executed exclusively client-side.
 
-- Technology Diversity
-- Learning Velocity
-- Unique Languages Used
-- Recently Adopted Technologies
-- Repository Distribution
+### 2. Client-Side Data Aggregation & Compute Efficiency
+* **The Challenge:** Generating composite scores (Commit Consistency, Language Velocity, and Profile Health Grades) requires processing hundreds of raw repository objects in real-time inside the browser runtime.
+* **The Solution:** To prevent UI thread freezing and dropping layout frames, all heavy analytical reductions and matrix parsing are decoupled from the main React render cycle. Complex multi-metric aggregations leverage memoized structural hooks (`useMemo`) mapped against composite data structures, ensuring mathematical calculations only execute when the targeted GitHub handle changes.
 
----
-
-### Developer Comparison
-
-Compare two GitHub profiles side-by-side.
-
-#### Comparison Metrics
-
-- Commit Consistency
-- Repository Maintenance
-- README Quality
-- Activity Trend
-- Open Source Participation
-- Technology Diversity
-
-#### Features
-
-- Interactive Radar Chart
-- Category-wise Comparison
-- Overall Developer Scores
-- Visual Performance Analysis
+### 3. Responsive Component Layout & Chart Performance
+* **The Challenge:** Rendering interactive Radar Charts, Contribution Calendars, and side-by-side comparison vectors simultaneously can degrade browser painting performance on low-power mobile or tablet screens.
+* **The Solution:** Leveraged SVG-driven components via `Recharts`, wrapped inside dynamic `ResponsiveContainer` nodes. Chart state data feeds are strictly normalized before insertion, minimizing mutation cycles and ensuring rendering speeds consistently clear standard 60fps targets during dynamic profile comparisons.
 
 ---
 
-### Language Analysis & Contribution Insights
+## Tech Stack & Engineering Primitives
 
-Gain a deeper understanding of coding activity and language usage.
+### Core Framework & Build Systems
+* **React.js (v18+)** – Component-driven architecture utilizing functional states and optimized hooks.
+* **Vite** – Next-generation build tool utilizing native ESM for instantaneous HMR (Hot Module Replacement) and optimized production chunk splitting.
+* **JavaScript (ES6+)** – Asynchronous control flows, array stream reductions, and defensive object destructuring.
 
-#### Includes
+### Data Ingestion & Visualization
+* **GitHub GraphQL & REST APIs** – Complex query declarations to pull deeply nested profile schemas.
+* **Recharts Engine** – Declarative, hardware-accelerated visualization components (Radar Charts, Pie Charts, Bar Charts).
 
-- Contribution Calendar Visualization
-- Language Distribution Analysis
-- Repository Language Breakdown
-- Contribution Impact Metrics
-- Language Proficiency Estimation
-
----
-
-## Tech Stack
-
-### Frontend
-
-- React.js
-- JavaScript (ES6+)
-- CSS3
-- Vite
-
-### APIs
-
-- GitHub REST API
-- GitHub GraphQL API
-
-### Data Visualization
-
-- Recharts
-- Radar Charts
-- Pie Charts
-- Bar Charts
-
-### Deployment
-
-- Vercel
+### Infrastructure
+* **Vercel** – Global Edge Network hosting with automated continuous deployment (CI/CD) pipelines triggered directly via GitHub main branch mutations.
 
 ---
 
-## Installation
+## Key Analytical Features
 
-### Clone Repository
+### 1. Developer Health Score
+A composite, algorithmic grade generated by executing cross-sectional data passes over raw profile metadata.
+* **Core Metrics Processed:** Commit Consistency over time, active Repository Maintenance windows, README metadata density, historical Activity Trends, and multi-organization Open Source Participation.
+* **Visual Layer:** Dynamic Radar Chart analysis and categorical score breakdowns mapped to an automated Health Grade tier.
 
+### 2. Learning Velocity & Tech Stack Diversity
+Evaluates a developer's technical expansion rate and technology adoption patterns over time.
+* **Insights Computed:** Technology diversity indexing, unique repository language distributions, chronological language adoption milestones, and framework density trends.
+
+### 3. Side-by-Side Profile Comparison
+An interactive analytical workspace letting users evaluate two distinct GitHub profiles simultaneously.
+* **Comparative Dimensions:** Cross-overlays of commit consistency scales, open-source impacts, repository distributions, and direct performance delta graphs.
+
+### 4. Code Base Footprints & Impact Visualizations
+Deep dive matrix calculations analyzing developer code shipping patterns.
+* **Render Layers:** Customized Contribution Calendar rendering, language percentage allocation breakdowns, repository language density tracking, and high-impact contribution matrices.
+
+---
+
+## Local Installation & Setup
+
+Ensure you have [Node.js](https://nodejs.org) installed locally before proceeding.
+
+### 1. Clone & Navigate
 ```bash
 git clone https://github.com/atharvgupta-dev/GitBeacon.git
 cd GitBeacon
 ```
 
-### Install Dependencies
-
+### 2. Install Dependencies
 ```bash
 npm install
 ```
 
-### Create Environment Variables
-
-Create a `.env` file in the project root:
-
+### 3. Environment Variable Provisioning
+Create a `.env` file in your root workspace directory to hook up your local environment to the GitHub API:
 ```env
-VITE_GITHUB_TOKEN=your_personal_access_token
+VITE_GITHUB_TOKEN=your_personal_access_token_here
 ```
 
-### Start Development Server
-
+### 4. Spin Up Infrastructure
+Execute the local Vite development web server:
 ```bash
 npm run dev
 ```
 
 ---
 
-## Live Demo
-
-**GitBeacon Live:**
-
-https://git-beacon.vercel.app/
-
----
-
-## Author
+## 👤 Author
 
 **Atharv Gupta**
-
-GitHub: https://github.com/atharvgupta-dev
+* **GitHub:** [@atharvgupta-dev](https://github.com/atharvgupta-dev)
+* **Portfolio:** [atharvgupta-dev.github.io/portfolio/](https://github.io)
