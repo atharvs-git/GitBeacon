@@ -6,7 +6,7 @@ Developer Analytics Platform built with React and GitHub APIs that evaluates Git
 
 ---
 
-## Architectural Decisions 
+##  Architectural Decisions 
 
 When building a high-throughput frontend analytics tool without a dedicated backend proxy, navigating external API architectural guardrails is critical. Below are the core engineering solutions implemented in GitBeacon to optimize performance, state, and rate limits:
 
@@ -14,11 +14,7 @@ When building a high-throughput frontend analytics tool without a dedicated back
 * **The Challenge:** The GitHub REST API limits unauthenticated traffic strictly to 60 requests per hour, which quickly exhausts when iterating through deeply nested repository and commit endpoints.
 * **The Solution:** Implemented a dual-strategy abstraction layer. The architecture dynamically switches between the high-density **GitHub GraphQL API** (to fetch massive nested data graphs in a single network round-trip) and the REST API. For production builds, the app gracefully traps `403 Rate Limit Exceeded` errors, surfacing a secure UI prompt allowing power users to provide a local, short-lived Personal Access Token (PAT) executed exclusively client-side.
 
-### 2. Client-Side Data Aggregation & Compute Efficiency
-* **The Challenge:** Generating composite scores (Commit Consistency, Language Velocity, and Profile Health Grades) requires processing hundreds of raw repository objects in real-time inside the browser runtime.
-* **The Solution:** To prevent UI thread freezing and dropping layout frames, all heavy analytical reductions and matrix parsing are decoupled from the main React render cycle. Complex multi-metric aggregations leverage memoized structural hooks (`useMemo`) mapped against composite data structures, ensuring mathematical calculations only execute when the targeted GitHub handle changes.
-
-### 3. Responsive Component Layout & Chart Performance
+### 2. Responsive Component Layout & Chart Performance
 * **The Challenge:** Rendering interactive Radar Charts, Contribution Calendars, and side-by-side comparison vectors simultaneously can degrade browser painting performance on low-power mobile or tablet screens.
 * **The Solution:** Leveraged SVG-driven components via `Recharts`, wrapped inside dynamic `ResponsiveContainer` nodes. Chart state data feeds are strictly normalized before insertion, minimizing mutation cycles and ensuring rendering speeds consistently clear standard 60fps targets during dynamic profile comparisons.
 
