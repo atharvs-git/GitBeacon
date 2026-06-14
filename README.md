@@ -2,6 +2,7 @@
 
 Developer Analytics Platform built with React and GitHub APIs that evaluates GitHub profiles through health scoring, repository analysis, contribution insights, language analytics, and developer comparisons.
 
+Currently working for upgrading it to Full Stack Based .
 **Live Demo:** [git-beacon.vercel.app](https://git-beacon.vercel.app/)
 
 ---
