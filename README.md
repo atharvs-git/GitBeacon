@@ -90,5 +90,5 @@ npm run dev
 ## 👤 Author
 
 **Atharv Gupta**
-* **GitHub:** [@atharvgupta-dev](https://github.com/atharvgupta-dev)
-* **Portfolio:** [atharvgupta-dev.github.io/portfolio/](https://github.io)
+* **GitHub:** [@atharvs-git](https://github.com/atharvs-git)
+* **Portfolio:** [atharvs-git.github.io/portfolio/](https://github.io)
