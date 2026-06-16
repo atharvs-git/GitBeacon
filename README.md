@@ -91,4 +91,4 @@ npm run dev
 
 **Atharv Gupta**
 * **GitHub:** [@atharvs-git](https://github.com/atharvs-git)
-* **Portfolio:** [atharvs-git.github.io/portfolio/](https://github.io)
+* **Portfolio:** [atharvs-git.github.io/portfolio/](https://atharvs-git.github.io/portfolio)
